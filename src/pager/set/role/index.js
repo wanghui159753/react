@@ -138,7 +138,6 @@ export default class role extends React.Component {
     };
 
     onSelect = (selectedKeys, info) => {
-        console.log('onSelect', info);
         this.setState({ selectedKeys });
     };
 
@@ -165,9 +164,13 @@ export default class role extends React.Component {
                     roleName:text.roleName,
                     comments:text.comments,
                     roleId:text.roleId
-                }
+                },
+                
+                reset_visible:!this.state.reset_visible
+            },()=>{
+               console.log(this.state)
             })
-        }
+        }else
         this.setState({
             reset_visible:!this.state.reset_visible
         })
@@ -186,7 +189,7 @@ export default class role extends React.Component {
     delete(text, full, index) {
         const _this = this;
         confirm({
-            content: '确定删除吗？',
+            title:'确定删除吗？',
             onOk() {
                 _this.state.data.splice(index, 1)
                 _this.setState({
@@ -228,11 +231,16 @@ export default class role extends React.Component {
                         {this.renderTreeNodes(this.state.treeData)}
                     </Tree>
                 </Modal>
-                <ResetInfo
-                    visible={this.state.reset_visible}
-                    handleCanle={this.reset.bind(this)}
-                    form={this.form}
-                ></ResetInfo>
+                {
+                    !this.state.reset_visible?null:(
+                        <ResetInfo
+                            visible={this.state.reset_visible}
+                            handleCanle={this.reset.bind(this)}
+                            form={this.state.form}
+                        ></ResetInfo>
+                    )
+                }
+                
             </div>
         );
     }
