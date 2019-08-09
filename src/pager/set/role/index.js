@@ -1,6 +1,6 @@
 import './index.less';
 import React from 'react';
-import {Table, Modal, Tree,Icon,Button} from 'antd';
+import {Table, Modal, Tree,Icon,Button,Input} from 'antd';
 import ResetInfo from './alert/index'
 const {confirm} = Modal;
 const { TreeNode } = Tree;
@@ -123,9 +123,6 @@ export default class role extends React.Component {
         form:{}
     }
     onExpand = expandedKeys => {
-        console.log('onExpand', expandedKeys);
-        // if not set autoExpandParent to false, if children expanded, parent can not collapse.
-        // or, you can remove all expanded children keys.
         this.setState({
             expandedKeys,
             autoExpandParent: false,
@@ -165,10 +162,7 @@ export default class role extends React.Component {
                     comments:text.comments,
                     roleId:text.roleId
                 },
-                
                 reset_visible:!this.state.reset_visible
-            },()=>{
-               console.log(this.state)
             })
         }else
         this.setState({
@@ -205,6 +199,11 @@ export default class role extends React.Component {
     render() {
         return (
             <div>
+                <div>
+                    <span>搜索</span>
+                    <Input value={''} placeholder={'请输入关键词'}/>
+                    <Button icon="search">搜索</Button>
+                </div>
                 <Table
                     bordered={true}
                     dataSource={this.state.data}
@@ -240,7 +239,7 @@ export default class role extends React.Component {
                         ></ResetInfo>
                     )
                 }
-                
+
             </div>
         );
     }
