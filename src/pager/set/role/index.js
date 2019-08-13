@@ -36,6 +36,105 @@ const req = {
         "roleId": 3,
         "roleName": "普通用户",
         "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
+    }, {
+        "createBy": 1,
+        "createTime": "2018/12/13 11:11:44",
+        "updateBy": 1,
+        "updateTime": "2018/12/13 15:50:35",
+        "isDelete": 0,
+        "roleId": 3,
+        "roleName": "普通用户",
+        "comments": "系统普通用户"
     }]
 };
 export default class role extends React.Component {
@@ -149,8 +248,8 @@ export default class role extends React.Component {
             }
             return <TreeNode {...item} />;
         });
-    sort1 = (a, b, c) => {
-        console.log(a, b, c)
+    sort1 = (pager, unnow, size) => {
+            console.log(pager.unnow,size)
     }
 
     //修改
@@ -198,10 +297,10 @@ export default class role extends React.Component {
 
     render() {
         return (
-            <div>
-                <div>
-                    <span>搜索</span>
-                    <Input value={''} placeholder={'请输入关键词'}/>
+            <div  className={'content'}>
+                <div className={'search'}>
+                    <span>搜索:</span>
+                    <Input value={''} placeholder={'请输入关键词'} style={{width:'auto',margin:'0 15px'}}/>
                     <Button icon="search">搜索</Button>
                 </div>
                 <Table
