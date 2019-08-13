@@ -12,44 +12,41 @@ class sys extends React.Component{
                 title: '账号',
                 dataIndex: 'name',
                 key: 'name',
-                sorter: (a, b) => a.name.length - b.name.length,
+                sorter: (a, b) => a.name.length - b.name.length
             },
             {
                 title: '名称',
                 dataIndex: 'age',
                 key: 'age',
-                sorter: (a, b) => a.name.length - b.name.length,
+                sorter: (a, b) => a.name.length - b.name.length
             },
             {
                 title: '角色',
                 dataIndex: 'address',
                 key: Math.random(),
-                sorter: (a, b) => a.name.length - b.name.length,
+                sorter: (a, b) => a.name.length - b.name.length
             },
             {
                 title: '公司',
                 dataIndex: 'address',
                 key: Math.random(),
-                sorter: (a, b) => a.name.length - b.name.length,
+                sorter: (a, b) => a.name.length - b.name.length
             },
             {
                 title: '电话',
                 dataIndex: 'address',
                 key: Math.random(),
-                sorter: (a, b) => a.name.length - b.name.length,
+                sorter: (a, b) => a.name.length - b.name.length
             },
             {
                 title: '操作',
                 key: 'tags',
                 dataIndex: 'tags',
-                render: text => (
-                    // console.error(text)
-                    // return (
+                render: (text,record) => (
                     <p>
-                        <span style={{color:'blue',borderRight:'1px solid #000',padding:'0 5px'}} onClick={this.handleReset(text)}>修改</span>
-                        <span style={{color:'red',padding:'0 5px'}} onClick={this.handleDelect(text)}>删除</span>
+                        <span style={{color:'blue',borderRight:'1px solid #000',padding:'0 5px'}} onClick={()=>{this.handleReset(record)}}>修改</span>
+                        <span style={{color:'red',padding:'0 5px'}} onClick={()=>{this.handleDelect(record)}}>删除</span>
                     </p>
-                    // )
                 ),
             }
         ],
@@ -76,11 +73,6 @@ class sys extends React.Component{
                 tags: ['cool', 'teacher'],
             },
         ],
-        rowSelection:{
-            onChange(select,selectMore){
-                // state.selectRow=select
-            }
-        },
         //选中行
         selectRow:[],
         modal:{
@@ -107,15 +99,22 @@ class sys extends React.Component{
         this.setState({modal:Object.assign(this.state.modal,{visible:!this.state.modal.visible})})
     }
     render(){
-        const state=this.state;
+        const {tableDate,columns,modal}=this.state;
         return(
             <div>
-                <Table rowSelection={{
+                <Table 
+                rowSelection={{
                     onChange:(select,selectrow)=>{
                         this.state.selectRow=select
                     }
-                }} dataSource={this.state.tableDate} columns={this.state.columns}></Table>
-                <ResetModal visible={state.modal.visible} form={state.modal.data} modalVisibleChange={this.modalVisibleChange.bind(this)}></ResetModal>
+                }} 
+                dataSource={tableDate} 
+                columns={columns}>
+                </Table>
+                {
+                    modal.visible?(<ResetModal visible={modal.visible} form={modal.data} modalVisibleChange={this.modalVisibleChange.bind(this)}></ResetModal>):null
+                }
+                
             </div>
         )
     }

@@ -7,28 +7,30 @@ export default class modal extends React.Component {
     constructor(props) {
         super(props)
         this.state={
-            form:{}
+            form:props.form
         }
-    }
-    componentWillReceiveProps(next){
-        this.setState({form:next.from})
     }
 
 
     handleSubmit() {
-        // this.props.modalVisibleChange()
+        
     }
 
-    handleInput() {
+    handleInput(name,event) {
+        this.setState({
+            form:Object.assign(this.state.form,{[name]:event.target.value})
+        })
     }
 
     render() {
-        console.log(this,'------')
-        const form = this.state.form;
+        const {form} = this.state;
+        let {visible}=this.props;
         return (
             <Modal
-                visible={this.props.visible}
+                visible={visible}
                 title={'用户信息修改'}
+                onCancel={this.props.modalVisibleChange}
+                footer={null}
                 >
                 <Form onSubmit={this.handleSubmit}>
                     <Form.Item>
