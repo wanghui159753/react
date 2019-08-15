@@ -6,7 +6,7 @@ import Role from '@/pager/set/role/index'
 import Sys from '@/pager/set/sys/index'
 import Permission from '@/pager/set/permission/index';
 import noMatch from '@/pager/404/404';
-
+import img from '@/static/img/head.png'
 import {Layout, Menu, Icon, Breadcrumb} from 'antd';
 
 const {SubMenu} = Menu;
@@ -56,14 +56,16 @@ class menu extends React.Component {
 
                     </Menu>
                 </Sider>
-                <Layout>
+                <Layout style={{height:'100vh'}}>
                     <Header style={{background: '#fff', padding: 0}}>
                         <Icon
                             className="trigger"
                             type={this.state.collapsed ? 'menu-unfold' : 'menu-fold'}
                             onClick={this.toggle}
                         />
-
+                        <div className="right">
+                            <img src={img} width={30} alt=""/>
+                        </div>
                     </Header>
                     <div className={'nav'}>
                         <Breadcrumb>
@@ -75,8 +77,7 @@ class menu extends React.Component {
                         style={{
                             margin: '24px 16px',
                             background: '#fff',
-                            minHeight: 280,
-                            maxHeight: 'calc(100% - 64px)'
+                            minHeight: 'unset'
                         }}
                     >
                         <Switch>
